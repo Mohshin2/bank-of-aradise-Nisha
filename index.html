@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>bank of Paradise</title>
+</head>
+<body>
+
+<div id="login-area">
+    <h1 class="text-center">Welcome to Bank Of Paradise Nisha </h1>
+
+        <div class="box">
+            <h4>Login</h4>
+            <input type="email" class="form-control" placeholder="email"> <br>
+            <input type="password" class="form-control" placeholder="password"> <br>
+            <button id="login" class="btn btn-success">Enter</button> 
+
+
+        </div>
+    </div>
+
+        <div id="transtion-area">
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="deposit statue">
+                        <h5> Deposit</h5>
+                        <h2> $ <span id="currentDeposit">00</span></h2>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                   <div class="withdraw statue">
+                    <h5>Withdraw</h5>
+                    <h2>$ <span id="currentwithdraw" > 00 </span> </h2>
+                   </div>
+                </div>
+
+                <div class="col-md-4">
+                   <div class="balance statue">
+                    <h5>Balance</h5>
+                    <h2>$ <span id="currentBalance" >1240 </span> </h2>
+                   </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="box">
+                        <h3>Deposit</h3>
+                        <input id="depostitamount" type="text" class="form-control" placeholder="$ in this amount is deposit">
+                        <br>
+                        <button id="adddeposit" class="btn btn-success">Deposit</button>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+                <div class="box">
+                    <h3>Wirthdraw</h3>
+                    <input id="withdrawAmount" type="text" class="form-control" placeholder="$ in this amount is withdraw" >
+                    <br>
+                    <button id="addwithdraw" class="btn btn-success">Wirthdraw </button>
+                </div>
+                </div>
+                
+
+            </div>
+
+
+        </div>
+
+    <script>
+
+        const loginBtnn = document.getElementById("login");
+        loginBtnn.addEventListener("click", function(){
+            const loginArea = document.getElementById("login-area");
+            loginArea.style.display="none";
+
+            const transtionArea = document.getElementById("transtion-area")
+            transtionArea.style.display = "inline" 
+        
+        })
+
+
+        //deposit button
+        const depositBtn = document.getElementById("adddeposit");
+            depositBtn.addEventListener("click", function(){
+                const depostitAmount = document.getElementById("depostitamount").value;
+                const depositNumber = parseFloat(depostitAmount)
+
+
+
+                updateSpamtext ("currentDeposit" ,depositNumber)
+                  updateSpamtext ("currentBalance" ,depositNumber)
+
+                  document.getElementById("depostitamount").value = "";
+           
+                })
+
+                // //withdraw button
+                
+                 const withdrawBtn = document.getElementById("addwithdraw");
+                 withdrawBtn.addEventListener("click", function(){
+                    const withdrawNumber  = getinputNumber("withdrawAmount");
+                     updateSpamtext ("currentwithdraw", withdrawNumber);
+                     updateSpamtext ("currentBalance", -1 * withdrawNumber );
+
+                     document.getElementById("withdrawAmount").value = "";
+                   
+                 })
+
+                 function getinputNumber (id){
+
+                    const withdrawAmount = document.getElementById(id).value;         
+                    const withdrawNumber = parseFloat(withdrawAmount);
+                     return withdrawNumber ;
+                 }
+
+                        function updateSpamtext (id, depositNumber){
+
+                            const currentBalance =  document.getElementById(id).innerText;
+                            const currentBalanceNumber = parseFloat(currentBalance);
+                            const totalBalance = depositNumber + currentBalanceNumber;
+                                document.getElementById(id).innerText = totalBalance;
+
+                        }
+                
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+body{
+    padding: 100px;
+
+}
+
+.box{
+    border-radius: 10px;
+    margin-top: 40px;
+    padding: 40px;
+    box-shadow: 5px 5px 10px gray;
+}
+
+#transtion-area{
+    display: none;
+}
+.statue{
+    margin:0 20px;
+    color:white;
+    padding:20px;
+    border-radius:10px;
+    
+}
+.deposit{
+    background-color: rgb(59, 179, 248);
+    
+}
+.withdraw{
+
+    background-color: salmon;
+}
+.balance{
+    background-color: orange;
+}
